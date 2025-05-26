@@ -23,6 +23,7 @@ app.get("/api/v1/tours", (req, res) => {
   res.status(200).json({
     // Format data in JSend data specification
     status: "success",
+    results: tours.length,
     data: {
       // If key-value pairs have same name, it doesn't need to be declared twice
       tours,
