@@ -21,11 +21,7 @@ const getAllTours = (req, res) => {
   });
 };
 
-//////////////////////////////////////////////////////////////////////////////// GET
-app.get("/api/v1/tours", getAllTours);
-
-//////////////////////////////////////////////////////////////////////////////// GET by id
-app.get("/api/v1/tours/:id", (req, res) => {
+const getTour = (req, res) => {
   console.log(req.params);
   // automatically converts string to a number if the string looks like a number
   const id = req.params.id * 1;
@@ -45,12 +41,16 @@ app.get("/api/v1/tours/:id", (req, res) => {
       tour,
     },
   });
-});
+};
+
+//////////////////////////////////////////////////////////////////////////////// GET
+app.get("/api/v1/tours", getAllTours);
+
+//////////////////////////////////////////////////////////////////////////////// GET by id
+app.get("/api/v1/tours/:id", getTour);
 
 //////////////////////////////////////////////////////////////////////////////// POST
 app.post("/api/v1/tours", (req, res) => {
-  // console.log(req.body);
-
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
 
