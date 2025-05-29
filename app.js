@@ -155,17 +155,17 @@ const deleteUser = (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 
-// Mounting a new router onto a route
-// Has the base url, the below route url's are then added onto this route url
-// Created a sub-app for each resource
-app.use("/api/v1/tours", tourRouter);
-app.use("/api/v1/users", userRouter);
-
 // Middleware for the tour router
 const tourRouter = express.Router();
 
 // Middleware for user router
 const userRouter = express.Router();
+
+// Mounting a new router onto a route
+// Has the base url, the below route url's are then added onto this route url
+// Created a sub-app for each resource
+app.use("/api/v1/tours", tourRouter);
+app.use("/api/v1/users", userRouter);
 
 // app.get("/api/v1/tours", getAllTours);
 // app.get("/api/v1/tours/:id", getTour);
