@@ -6,7 +6,8 @@ const app = express();
 
 //////////////////////////////////////////////////////////////////////////////// MIDDLEWARE
 
-
+// Logging to the console using 'dev' format
+app.use(morgan("dev"));
 
 // These middleware apply to every single request
 app.use(express.json());
