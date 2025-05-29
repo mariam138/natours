@@ -155,12 +155,17 @@ const deleteUser = (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 
-// Creating a router for tour resources
+// Mounting a new router onto a route
 // Has the base url, the below route url's are then added onto this route url
 // Created a sub-app for each resource
 app.use("/api/v1/tours", tourRouter);
+app.use("/api/v1/users", userRouter);
+
 // Middleware for the tour router
 const tourRouter = express.Router();
+
+// Middleware for user router
+const userRouter = express.Router();
 
 // app.get("/api/v1/tours", getAllTours);
 // app.get("/api/v1/tours/:id", getTour);
@@ -168,22 +173,14 @@ const tourRouter = express.Router();
 // app.patch("/api/v1/tours/:id", updateTour);
 // app.delete("/api/v1/tours/:id", deleteTour);
 
+// Tour routes
 // Chain on the methods that use the same URL
 app.tourRouter("/").get(getAllTours).post(createTour);
+app.tourRouter("/:id").get(getTour).patch(updateTour).delete(deleteTour);
 
-app
-  .tourRouter("/:id")
-  .get(getTour)
-  .patch(updateTour)
-  .delete(deleteTour);
-
-app.route("/api/v1/users").get(getAllUsers).post(createUser);
-
-app
-  .route("/api/v1/users/:id")
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser);
+// User routes
+app.route("/").get(getAllUsers).post(createUser);
+app.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
 
 //////////////////////////////////////////////////////////////////////////////// START SERVER
 
