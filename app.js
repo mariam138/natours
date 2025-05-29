@@ -156,6 +156,10 @@ const deleteUser = (req, res) => {
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 
 // Creating a router for tour resources
+// Has the base url, the below route url's are then added onto this route url
+// Created a sub-app for each resource
+app.use("/api/v1/tours", tourRouter);
+// Middleware for the tour router
 const tourRouter = express.Router();
 
 // app.get("/api/v1/tours", getAllTours);
@@ -165,10 +169,10 @@ const tourRouter = express.Router();
 // app.delete("/api/v1/tours/:id", deleteTour);
 
 // Chain on the methods that use the same URL
-app.tourRouter("/api/v1/tours").get(getAllTours).post(createTour);
+app.tourRouter("/").get(getAllTours).post(createTour);
 
 app
-  .tourRouter("/api/v1/tours/:id")
+  .tourRouter("/:id")
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
