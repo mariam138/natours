@@ -6,6 +6,7 @@ const app = express();
 
 //////////////////////////////////////////////////////////////////////////////// MIDDLEWARE
 
+// 3rd party middleware
 // Logging to the console using 'dev' format
 app.use(morgan("dev"));
 
@@ -133,6 +134,14 @@ app
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
+
+app.route("/api/v1/users").get(getAllUsers).post(createUser);
+
+app
+  .route("/api/v1/users/:id")
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 
 //////////////////////////////////////////////////////////////////////////////// START SERVER
 
