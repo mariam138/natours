@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 
 //////////////////////////////////////////////////////////////////////////////// MIDDLEWARE
+
+// These middleware apply to every single request
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -10,14 +12,27 @@ app.use((req, res, next) => {
   next();
 });
 
+// Manipulate the request object
+// Adding the request time to the request object using middleware
+// NOTE: requestTime is not part of the request object, it is a property we are adding on ourselves
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
+
+////////////////////////////////////////////////////////////////////////////////
+
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
 const getAllTours = (req, res) => {
+  console.log(req.requestTime);
+
   res.status(200).json({
     // Format data in JSend data specification
     status: "success",
+    requestedAt: req.requestTime,
     results: tours.length,
     data: {
       // If key-value pairs have same name, it doesn't need to be declared twice
