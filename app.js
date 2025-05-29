@@ -161,12 +161,6 @@ const tourRouter = express.Router();
 // Middleware for user router
 const userRouter = express.Router();
 
-// Mounting a new router onto a route
-// Has the base url, the below route url's are then added onto this route url
-// Created a sub-app for each resource
-app.use("/api/v1/tours", tourRouter);
-app.use("/api/v1/users", userRouter);
-
 // app.get("/api/v1/tours", getAllTours);
 // app.get("/api/v1/tours/:id", getTour);
 // app.post("/api/v1/tours", createTour);
@@ -175,12 +169,18 @@ app.use("/api/v1/users", userRouter);
 
 // Tour routes
 // Chain on the methods that use the same URL
-app.tourRouter("/").get(getAllTours).post(createTour);
-app.tourRouter("/:id").get(getTour).patch(updateTour).delete(deleteTour);
+tourRouter.route("/").get(getAllTours).post(createTour);
+tourRouter.route("/:id").get(getTour).patch(updateTour).delete(deleteTour);
 
 // User routes
-app.route("/").get(getAllUsers).post(createUser);
-app.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+userRouter.route("/").get(getAllUsers).post(createUser);
+userRouter.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+
+// Mounting a new router onto a route
+// Has the base url, the below route url's are then added onto this route url
+// Created a sub-app for each resource
+app.use("/api/v1/tours", tourRouter);
+app.use("/api/v1/users", userRouter);
 
 //////////////////////////////////////////////////////////////////////////////// START SERVER
 
