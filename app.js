@@ -155,8 +155,6 @@ const deleteUser = (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 
-// Middleware for the tour router
-const tourRouter = express.Router();
 
 // Middleware for user router
 const userRouter = express.Router();
@@ -167,10 +165,6 @@ const userRouter = express.Router();
 // app.patch("/api/v1/tours/:id", updateTour);
 // app.delete("/api/v1/tours/:id", deleteTour);
 
-// Tour routes
-// Chain on the methods that use the same URL
-tourRouter.route("/").get(getAllTours).post(createTour);
-tourRouter.route("/:id").get(getTour).patch(updateTour).delete(deleteTour);
 
 // User routes
 userRouter.route("/").get(getAllUsers).post(createUser);
