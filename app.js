@@ -34,47 +34,8 @@ const tours = JSON.parse(
 
 
 
-const getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not yet defined",
-  });
-};
-
-const getUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not yet defined",
-  });
-};
-
-const createUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not yet defined",
-  });
-};
-
-const updateUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not yet defined",
-  });
-};
-
-const deleteUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "This route is not yet defined",
-  });
-};
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
-
-
-// Middleware for user router
-const userRouter = express.Router();
-
 // app.get("/api/v1/tours", getAllTours);
 // app.get("/api/v1/tours/:id", getTour);
 // app.post("/api/v1/tours", createTour);
@@ -82,9 +43,7 @@ const userRouter = express.Router();
 // app.delete("/api/v1/tours/:id", deleteTour);
 
 
-// User routes
-userRouter.route("/").get(getAllUsers).post(createUser);
-userRouter.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+
 
 // Mounting a new router onto a route
 // Has the base url, the below route url's are then added onto this route url
