@@ -7,6 +7,8 @@ const tours = JSON.parse(
 // param middleware to check request id
 // this middleware is ran before any of the below controllers when requests are made
 exports.checkId = (req, res, next, val) => {
+  console.log(`Tour id is: ${val}`);
+
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
       status: "fail",
@@ -73,13 +75,6 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 > tours.length) {
-    return res.status(404).json({
-      status: "fail",
-      message: "Invalid ID",
-    });
-  }
-
   res.status(200).json({
     status: "success",
     data: {
