@@ -9,11 +9,12 @@ const router = express.Router();
 // val parameter is used to access the id parameter of the route
 router.param("id", tourController.checkId);
 
+
 // Tour routes
 router
   .route("/")
   .get(tourController.getAllTours)
-  .post(tourController.createTour);
+  .post(tourController.checkBody, tourController.createTour);
 router
   .route("/:id")
   .get(tourController.getTour)
