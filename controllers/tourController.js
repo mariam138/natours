@@ -18,12 +18,12 @@ exports.checkId = (req, res, next, val) => {
   next();
 };
 
-
+// Checks if there is the price/name value in request body for post method
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
     return res.status(404).json({
       status: "fail",
-      message: "No price or name in tour",
+      message: "No price or name found in tour",
     });
   }
   next();
