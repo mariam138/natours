@@ -6,8 +6,9 @@ const tourController = require("../controllers/tourController");
 const router = express.Router();
 
 // Param middleware, which has a fourth argument - val
+// val parameter is used to access the id parameter of the route
 router.param("id", (req, res, next, val) => {
-  console.log(`Tour id is: ${id}`);
+  console.log(`Tour id is: ${val}`);
   next();
 });
 
