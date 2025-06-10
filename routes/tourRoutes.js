@@ -5,6 +5,12 @@ const tourController = require("../controllers/tourController");
 // Middleware for the tour router - no longer need to specify the router as the router is in it's own file
 const router = express.Router();
 
+// Param middleware, which has a fourth argument - val
+router.param("id", (req, res, next, val) => {
+  console.log(`Tour id is: ${id}`);
+  next();
+});
+
 // Tour routes
 router
   .route("/")
