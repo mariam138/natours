@@ -1,6 +1,7 @@
-const fs = require("fs");
 const express = require("express");
 const morgan = require("morgan");
+
+// Router imports
 
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
