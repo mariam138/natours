@@ -3,6 +3,10 @@ const express = require("express");
 // Middleware for the tour router - no longer need to specify the router as the router is in it's own file
 const router = express.Router();
 
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
+
 const getAllTours = (req, res) => {
   console.log(req.requestTime);
 

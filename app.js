@@ -28,12 +28,6 @@ app.use((req, res, next) => {
 
 //////////////////////////////////////////////////////////////////////////////// ROUTE HANDLERS
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 // app.get("/api/v1/tours", getAllTours);
@@ -41,9 +35,6 @@ const tours = JSON.parse(
 // app.post("/api/v1/tours", createTour);
 // app.patch("/api/v1/tours/:id", updateTour);
 // app.delete("/api/v1/tours/:id", deleteTour);
-
-
-
 
 // Mounting a new router onto a route
 // Has the base url, the below route url's are then added onto this route url
