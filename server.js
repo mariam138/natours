@@ -1,4 +1,8 @@
+const dotenv = require("dotenv");
 const app = require("./app");
+
+// Reads variables in config.env and add them to node environment variables
+dotenv.config({ path: "./config.env" });
 
 console.log(process.env);
 
