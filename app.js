@@ -11,8 +11,10 @@ const app = express();
 //////////////////////////////////////////////////////////////////////////////// MIDDLEWARE
 
 // 3rd party middleware
-// Logging to the console using 'dev' format
-app.use(morgan("dev"));
+// Logging to the console using 'dev' format only in dev mode
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // These middleware apply to every single request
 app.use(express.json());
