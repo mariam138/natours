@@ -2,7 +2,6 @@ const express = require("express");
 const morgan = require("morgan");
 
 // Router imports
-
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
 
@@ -34,8 +33,6 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-
-//////////////////////////////////////////////////////////////////////////////// ROUTE HANDLERS
 
 //////////////////////////////////////////////////////////////////////////////// ROUTES
 // app.get("/api/v1/tours", getAllTours);
