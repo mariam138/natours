@@ -28,7 +28,7 @@ const tourSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: [, "A tour must have a price"],
+    required: [true, "A tour must have a price"],
   },
 });
 
@@ -37,9 +37,8 @@ const Tour = mongoose.model("Tour", tourSchema);
 
 // Creating a document using the Tour model
 const testTour = new Tour({
-  name: "The Forest Hiker",
-  rating: 4.7,
-  price: 497,
+  name: "The Park Camper",
+  price: 997,
 });
 // saves document to database which returns a promise to be consumed
 testTour
