@@ -41,6 +41,15 @@ const testTour = new Tour({
   rating: 4.7,
   price: 497,
 });
+// saves document to database which returns a promise to be consumed
+testTour
+  .save()
+  .then((doc) => {
+    console.log(doc);
+  })
+  .catch((err) => {
+    console.log("ERROR!:", err);
+  });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
