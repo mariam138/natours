@@ -13,6 +13,25 @@ const DB = process.env.DATABASE.replace(
 
 mongoose.connect(DB).then(() => console.log("DB connection successful"));
 
+// schema is created as on object, and mongoose uses native JS datatypes to describe each field
+// schema type options inside name objects to add more information
+const tourSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    // Comment is for error catching. if the tour has no name, this message will appear
+    required: [true, "A tour must have a name"],
+    unique: true,
+  },
+  rating: {
+    type: Number,
+    default: 4.5,
+  },
+  price: {
+    type: Number,
+    required: [, "A tour must have a price"],
+  },
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
