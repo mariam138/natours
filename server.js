@@ -35,6 +35,13 @@ const tourSchema = new mongoose.Schema({
 // Create model from tour schema, named with capital (like in django), then define which schema is to be used
 const Tour = mongoose.model("Tour", tourSchema);
 
+// Creating a document using the Tour model
+const testTour = new Tour({
+  name: "The Forest Hiker",
+  rating: 4.7,
+  price: 497,
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
